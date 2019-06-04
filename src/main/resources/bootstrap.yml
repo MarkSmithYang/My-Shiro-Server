@@ -1,0 +1,29 @@
+#设置服务端口
+server:
+  port: 9100
+#eureka服务注册中心的配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka.didispace.com/eureka/
+#spring的配置
+spring:
+  application:
+    name: shiro-server
+  profiles:
+    active: dev
+  #mongodb配置
+  data:
+    mongodb:
+      database: app
+      host: localhost
+#redis使用默认的配置即可
+
+#网关用来显示各个服务接口子系统的swagger文档的相关设置,由于没有放到配置中心,所以没有子工程配了swagger,都需要放开这些内容
+permit:
+  config:
+    #设置不需要登录的url地址
+    permitUrls: /,/swagger-ui.html,/swagger-resources/**, /**/v2/api-docs,/webjars/springfox-swagger-ui/**,/producer-service/world,
+      /**/favicon.ico,/group1/**,/actuator/info,/actuator/health,/test,/user-server/userLogin,/user-server/userRegister
+    #jwt的token的加密秘钥(gateway-oauth2-secret)
+    base64Secret: Z2F0ZXdheS1vYXV0aDItc2VjcmV0
